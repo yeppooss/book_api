@@ -1,0 +1,172 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/admin/users/{user_id}/books":
+    get:
+      summary: get consumer`s book`
+      tags:
+      - Admin
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success
+        '401':
+          description: not allowed
+    post:
+      summary: add book to consumer
+      tags:
+      - Admin
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '201':
+          description: success
+        '401':
+          description: not allowed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+  "/api/v1/admin/users/{user_id}/books/{id}":
+    delete:
+      summary: destroy consumer`s book`
+      tags:
+      - Admin
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '204':
+          description: success
+        '401':
+          description: not allowed
+  "/api/v1/admin/users/{user_id}":
+    get:
+      summary: get consumer info
+      tags:
+      - Consumer
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success
+        '401':
+          description: not allowed
+  "/api/v1/books":
+    get:
+      summary: get user books
+      tags:
+      - Books
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success
+  "/users/sign_in":
+    post:
+      summary: login
+      tags:
+      - Login
+      parameters: []
+      responses:
+        '201':
+          description: success
+        '401':
+          description: success
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+  "/users":
+    post:
+      summary: register
+      tags:
+      - Register
+      parameters: []
+      responses:
+        '201':
+          description: success
+        '422':
+          description: success
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+securitySchemes:
+  Bearer:
+    description: "..."
+    type: apiKey
+    name: Authorization
+    in: header
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com

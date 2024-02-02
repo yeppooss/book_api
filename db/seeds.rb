@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+user = User.create(email: "user@example.com", password: "password")
+admin = User.create(email: "user@example.com", password: "password", role: :admin)
+
+10.times do
+  Book.create(title: Faker::Books.title, description: Faker::Lorem.sentence(word_count: 20), user: user)
+end
