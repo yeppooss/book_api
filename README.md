@@ -46,13 +46,6 @@ The application will be accessible at `http://localhost:3000`.
 
 You will have an API docs at `http://localhost:3000/api-docs`.
 
-## Usage
-
-Describe how to use your application. Include any necessary steps, configuration, or environment variables.
-
-## Development
-
-Include any information about how to contribute to the development of your project.
 
 ## Testing
 
