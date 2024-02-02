@@ -11,7 +11,7 @@ class Ability
     end
 
     if user.consumer?
-      can :manage, Book, user_id: user.id
+      can :read, Book, user: user
     end
   end
 end

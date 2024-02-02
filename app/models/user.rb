@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: Devise::JWT::RevocationStrategies::Null
 
-  has_many :books
+  has_many :books, dependent: :destroy
 
   enum :role, {consumer: 0, admin: 1}
 end
