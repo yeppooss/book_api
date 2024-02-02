@@ -20,6 +20,7 @@ gem "rack-cors"
 gem "cancancan"
 gem "factory_bot"
 gem "faker"
+gem "dotenv-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"

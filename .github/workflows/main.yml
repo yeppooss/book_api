@@ -9,8 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Copy .env
+        run: mv .env.example .env
+
       - name: Build the stack
         run: docker-compose up -d --build
+
+      - name: Prepare database
+        run: RAILS_ENV=test docker-compose run rails bin/rails db:create
 
       - name: Run tests
         run: docker-compose run rails bundle exec rspec .
