@@ -7,5 +7,5 @@ class User < ApplicationRecord
 
   has_many :books
 
-  enum :role, {costumer: 0, admin: 1}
+  enum :role, {consumer: 0, admin: 1}
 end

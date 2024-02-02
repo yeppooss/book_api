@@ -16,4 +16,5 @@ ARG DEFAULT_PORT 3000
 
 EXPOSE ${DEFAULT_PORT}
 
-CMD ["rails","server"]
+CMD [ "bundle","exec", "puma", "config.ru"]
+#CMD ["rails","server"]
